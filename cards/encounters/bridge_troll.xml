@@ -1,0 +1,26 @@
+<encounter terrain="river" type="monster">
+  <title>Bridge Troll</title>
+  <body>
+    <p>As I neared the bridge, a troll lumbered from the bushes and stood in my path. Sweat glistened on his bulging gray muscles and stained his leather jerkin. The stench made my eyes water.</p>
+    <p><q>10 gold,</q> he growled, weighing a nail-studded club in clawed hands.</p>
+  </body>
+  <choices>
+    <choice action="roll">
+      <if less-than="10" including="fury">
+        <lose what="fury" amount="1" />
+        <lose what="fortune" amount="10" />
+        <lose what="fame" amount="1" />
+      </if>
+      <otherwise>
+        <gain what="fortune" amount="10" />
+        <gain what="item" amount="1" />
+        <advance conquer="true" />
+      </otherwise>
+    </choice>
+    <choice action="flee"></choice>
+    <choice action="pay">
+      <lose what="fortune" amount="10" />
+      <advance />
+    </choice>
+  </choices>
+</encounter>

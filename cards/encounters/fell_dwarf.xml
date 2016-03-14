@@ -1,0 +1,22 @@
+<encounter terrain="mountain" type="monster">
+  <title>Fell Dwarf</title>
+  <body>
+    <p>The ledge was less firm than my grip expected. As my hand swung free from the crumbling rock it was seized in a warm leather gauntlet.</p>
+    <p>I struggled up and onto the shelf and collapsed, gasping thanks to my yet-unseen rescuer.</p>
+    <p><q>Don't thank me just yet,</q> they growled over the shriek of an axe being swung.</p>
+  </body>
+  <choices>
+    <choice action="roll">
+      <if less-than="10" including="fury">
+        <lose what="fury" amount="1" />
+        <lose what="fortune" amount="10" />
+        <lose what="fame" amount="1" />
+      </if>
+      <otherwise>
+        <gain what="fortune" amount="10" />
+        <gain what="item" amount="1" />
+        <advance conquer="true" />
+      </otherwise>
+    </choice>
+  </choices>
+</encounter>
