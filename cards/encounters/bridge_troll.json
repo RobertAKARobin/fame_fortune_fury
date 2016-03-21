@@ -1,0 +1,27 @@
+{
+  "title": "Bridge Troll",
+  "terrain": "water",
+  "traits": [
+    "troll"
+  ],
+  "body": [
+      "As I neared the bridge, a troll lumbered from the bushes and stood in my path. Sweat glistened on his bulging gray muscles and stained his leather jerkin. The stench made my eyes water.",
+      "<q>10 gold,</q> he growled, weighing a nail-studded club in clawed hands."
+  ],
+  "choices": {
+    "flee": {},
+    "fight": {
+      "win": {
+        "fury": 1,
+        "fortune": 10,
+        "fame": 1,
+        "advance": true,
+        "conquer": true
+      },
+      "lose": {
+        "fortune": 10,
+        "item": 1
+      }
+    }
+  }
+}
