@@ -1,4 +1,9 @@
-function Game(){}
+function Game(whenLoaded){
+  var game = this;
+  game.encounters = new Deck();
+  game.encounters.load(Encounter, whenLoaded);
+}
+Game.prototype.encounters = {}
 
 
 function Choice(){}
