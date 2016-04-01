@@ -3,8 +3,9 @@
 (function(){
 
   var game = new Game(function whenLoaded(){
-    h.forEach(game.encounters, function(value, key){
-      console.log(value)
+    h.for_each(game.encounters, function(card, key){
+      var html = card.render();
+      document.body.innerHTML += html;
     });
   });
 
