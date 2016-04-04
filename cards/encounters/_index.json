@@ -1,6 +1,26 @@
-[
-  "barrow_wight",
-  "bridge_troll",
-  "elven_scout",
-  "fell_dwarf"
-]
+{
+  "barrow_wight": {
+    "terrain": "plains",
+    "traits": [
+      "undead"
+    ]
+  },
+  "bridge_troll": {
+    "terrain": "water",
+    "traits": [
+      "troll"
+    ]
+  },
+  "elven_scout": {
+    "terrain": "forest",
+    "traits": [
+      "elf"
+    ]
+  },
+  "fell_dwarf": {
+    "terrain": "mountain",
+    "traits": [
+      "dwarf"
+    ]
+  }
+}
