@@ -1,27 +1,38 @@
-function Deck(){}
-Deck.prototype.load = function(klass, cardsLoaded){
+function Deck(klass){
   var deck = this;
-  var klassname = klass.name.toLowerCase();
-  h.ajax("./templates/" + klassname + ".html", loadTemplate);
+  deck.cards = {};
+  deck.class = klass;
+  deck.classname = deck.class.name.toLowerCase();
+}
+Deck.prototype.load = function(cardsLoaded){
+  var deck = this;
+  h.ajax("./templates/" + deck.classname + ".html", loadTemplate);
   function loadTemplate(html){
-    klass.template = html.split(/\{\{.*?\}\}/);
-    klass.fields = [];
+    deck.class.template = html.split(/\{\{.*?\}\}/);
+    deck.class.fields = [];
     html.replace(/\{\{(.*?)\}\}/g, function(a, field){
-      klass.fields.push(field);
+      deck.class.fields.push(field);
     });
-    templatesLoaded();
+    templateLoaded();
   }
-  function templatesLoaded(){
-    h.ajax("./cards/" + klassname + "s/_index.json", loadCards);
+  function templateLoaded(){
+    h.ajax("./cards/" + deck.classname + "s/_index.json", loadCards);
   }
-  function loadCards(index){
-    h.for_each(index, function(name, i, next){
-      h.ajax("./cards/" + klassname + "s/" + name + ".json", function(data){
-        var card    = new klass();
-        card.class  = klass;
+  function loadCards(cardList){
+    h.for_each(cardList, function(listItem, abbr, next){
+      h.ajax("./cards/" + deck.classname + "s/" + abbr + ".html", function(html){
+        var card    = new deck.class();
+        card.class  = deck.class;
         card.deck   = deck;
-        deck[name]  = card;
-        h.extend(card, data);
+        card.html   = html;
+        card.abbr   = abbr;
+        deck.cards[abbr] = card;
+        h.extend(card, listItem);
+        if(card.title === undefined){
+          card.title = h.collect(card.abbr.split("_"), function(word){
+            return h.capitalize(word);
+          }).join(" ");
+        }
         next();
       });
     }, cardsLoaded);
@@ -33,12 +44,13 @@ Deck.prototype.search;
 
 function Card(){}
 Card.prototype.render = function(){
-  var card = this;
-  var output = "";
+  var card    = this;
+  var output  = "";
   h.for_each(card.class.template, function(snippet, i){
     var field = card.class.fields[i - 1];
     if(i > 0) output += card[field];
     output += snippet;
   });
-  return output;
+  card.el = document.createElement("DIV");
+  card.el.innerHTML = output;
 }

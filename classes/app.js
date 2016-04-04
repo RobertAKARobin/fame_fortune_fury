@@ -1,7 +1,8 @@
 function Game(whenLoaded){
   var game = this;
-  game.encounters = new Deck();
-  game.encounters.load(Encounter, whenLoaded);
+  game.deck = {};
+  game.deck.encounters = new Deck(Encounter);
+  game.deck.encounters.load(whenLoaded);
 }
 Game.prototype.encounters = {}
 
