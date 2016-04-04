@@ -1,0 +1,78 @@
+$terrains: (
+  prairie:  (
+    color:  #99dd88,
+    text:   "_"
+  ),
+  water:    (
+    color:  #5566dd,
+    text:   "w"
+  ),
+  forest:   (
+    color:  #006600,
+    text:   "f"
+  ),
+  mountain: (
+    color:  #777799,
+    text:   "M"
+  )
+);
+*{
+  margin:0;
+  border:0;
+  padding:0;
+  font-size:inherit;
+  font-family:inherit;
+  font-weight:inherit;
+  font-style:inherit;
+  border-collapse:collapse;
+  text-decoration:inherit;
+  color:inherit;
+  list-style:none;
+}
+*:focus{
+  outline:none;
+}
+html{
+  font-family:Palatino, Georgia, serif;
+  font-size:14px;
+  line-height:18px;
+  color:black;
+  background-color:#eee;
+}
+
+[data-card]{
+  box-sizing:border-box;
+  width:300px;
+  height:420px;
+  border-radius:12px;
+  border-width:12px;
+  border-style:solid;
+  margin:20px;
+  padding:5px;
+  background-color:#fff;
+
+  h1{
+    text-align:center;
+    font-weight:bold;
+    line-height:2rem;
+  }
+
+  [data-body]{
+    p{
+      font-style:italic;
+      &:not(:first-child){
+        padding-top:1em;
+      }
+    }
+  }
+
+  @each $terrain, $props in $terrains{
+    &[data-terrain="#{$terrain}"]{
+      border-color:map_get($props, "color");
+    }
+  }
+
+  [data-choices]{
+    // border-top:1px solid rgba(0,0,0,0.8);
+  }
+}

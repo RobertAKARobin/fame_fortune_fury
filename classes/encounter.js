@@ -1,4 +1,12 @@
 function Encounter(){}
+Encounter.terrains = [
+  "prairie",
+  "mountain",
+  "forest",
+  "water",
+  "swamp",
+  "desert"
+]
 Encounter.prototype = new Card();
 Encounter.prototype.flip
 Encounter.prototype.place = function(){
