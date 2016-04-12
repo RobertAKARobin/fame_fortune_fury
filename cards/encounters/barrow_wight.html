@@ -5,19 +5,19 @@
 
 <div data-choices>
   <div>
-    <p>Flee</p>
-    <p data-fame>-1</p>
+    <h1 data-choice="flee">Flee</h1>
+    <p data-fame="-1"></p>
   </div>
   <div data-roll>
-    <p>Fight</p>
-    <div data-roll="(dice + player.strength) >= encounter.strength">
+    <h1 data-choice="fight">Fight</h1>
+    <div data-roll-outcome="(dice + player.strength) >= encounter.strength">
       <p data-advance data-conquer>Advance and conquer</p>
-      <p data-fame>1</p>
-      <p data-fortune>20</p>
+      <p data-fame="1"></p>
+      <p data-fortune="20"></p>
     </div>
-    <div data-roll="otherwise">
-      <p data-fury>-1</p>
-      <p data-fortune>-10</p>
+    <div data-roll-outcome="otherwise">
+      <p data-fury="-1"></p>
+      <p data-fortune="10"></p>
     </div>
   </div>
 </div>
