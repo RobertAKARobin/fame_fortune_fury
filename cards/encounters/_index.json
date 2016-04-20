@@ -1,26 +1,49 @@
 {
+  "DEFAULT": {
+    "choices":  {
+      "flee":   {
+        "advance":  false
+      },
+      "fight":  {
+        "rolls":  {
+          "win":  "dice + player.fury > card.fury",
+          "lose": "otherwise"
+        },
+        "outcomes": {
+          "win":  {
+            "advance":  true,
+            "conquer":  true,
+            "fame":     1
+          },
+          "lose": {
+            "advance":  false
+          }
+        }
+      }
+    }
+  },
   "barrow_wight": {
-    "terrain": "prairie",
-    "traits": [
-      "undead"
-    ]
+    "terrain":  "prairie",
+    "fury":     10,
+    "traits":   ["undead"],
+    "choices":  "default"
   },
   "bridge_troll": {
-    "terrain": "water",
-    "traits": [
-      "troll"
-    ]
+    "terrain":  "water",
+    "fury":     10,
+    "traits":   ["troll"],
+    "choices":  "default"
   },
   "elven_scout": {
-    "terrain": "forest",
-    "traits": [
-      "elf"
-    ]
+    "terrain":  "forest",
+    "fury":     10,
+    "traits":   ["elf"],
+    "choices":  "default"
   },
   "fell_dwarf": {
-    "terrain": "mountain",
-    "traits": [
-      "dwarf"
-    ]
+    "terrain":  "mountain",
+    "fury":     10,
+    "traits":   ["dwarf"],
+    "choices":  "default"
   }
 }
