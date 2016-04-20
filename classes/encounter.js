@@ -16,7 +16,7 @@ Encounter.prototype.place = function(){
     choice.addEventListener("click", function(){
       var el = this;
       var isRoll  = el.hasAttribute("data-roll");
-      var choice  = h.el("[data-choice]", el).getAttribute("data-choice");
+      var choice  = el.getAttribute("data-choice");
     });
   });
   document.body.appendChild(encounter.el);
