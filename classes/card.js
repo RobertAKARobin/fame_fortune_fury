@@ -7,10 +7,10 @@ function Deck(klass){
 Deck.prototype.load = function(cardsLoaded){
   var deck = this;
   h.chain([
-    function(next){
+    function loadTemplate(next){
       h.ajax("./templates/" + deck.classname + ".html", next);
     },
-    function(next, data){
+    function parseTemplate(next, data){
       var html = data[0];
       deck.class.template = html.split(/\{\{.*?\}\}/);
       deck.class.fields = [];
@@ -19,10 +19,10 @@ Deck.prototype.load = function(cardsLoaded){
       });
       next();
     },
-    function(next){
+    function loadCardIndexes(next){
       h.ajax("./cards/" + deck.classname + "s/_index.json", next);
     },
-    function(next, data){
+    function loadCardData(next, data){
       var cardList = data[0];
       h.for_each(cardList, function(listItem, abbr, next){
         h.ajax("./cards/" + deck.classname + "s/" + abbr + ".html", function(html){
